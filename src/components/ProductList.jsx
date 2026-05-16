@@ -16,7 +16,13 @@ const ProductList = ({ addToCart, category }) => {
       {sampleProducts
         .filter((product) => {
         return category === "all" || product.category === category;
-        })
+        }).length === 0 ? (
+          <p>No products available</p>
+        ) : (
+          sampleProducts.filter((product) => {
+            return category === "all" || product.category === category;
+          })
+        )
         .map((product) => (
           <ProductCard key={product.id} product={product} addToCart={addToCart}/>
         ))}
